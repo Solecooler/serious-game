@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* style.css */
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#gameContainer {
+    position: relative;
+    width: 992px;
+    height: 530px;
+    overflow: hidden;
+    background-image: url('assets/images/background-chantier.png');
+    background-size: cover;
+}
+
+#character {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 40px;
+    height: 110px;
+    transform: translateX(-50%);
+    background-image: url('assets/images/player.png');
+    background-size: cover;
+}
+
+.game-object {
+    position: absolute;
+    background-size: cover;
+}
+
+#score, #temperature {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+#score {
+    left: 10px;
+}
+
+#temperature {
+    right: 10px;
+}
+
+.semelle {
+    width: 100px;
+    height: 100px;
+}
+
+.panneau_inflammable {
+    width: 50px;
+    height: 50px;
+}
+
+.pelle, .marteau, .panneau_verglas, .flaque {
+    width: 50px;
+    height: 50px;
+}
+/*POPUP*/
+#gameOverMessage{
+    background-color: #f4f4f485;
+    position: fixed;
+    width: 992px;
+    height: 530px;
+    font-family: "Poppins sans-serif";
+}
+.content_popup{
+    position: fixed;
+    top: 150px;
+    left: 387px;
+    text-align: center;
+}
+.GameOver_popupTitle{
+    color: #b10c11;
+}
+.GameOver_popupBtn{
+    background-color: #0C579D;
+    color: #F9F9FA;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Poppins sans-serif';
+    text-align: center;
+    padding: 13px 45px;
+    border-radius: 4px;
+    border: 1px solid #0C579D;
+
+}
