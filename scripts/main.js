@@ -22,6 +22,7 @@ const scoreDisplay = document.getElementById('score');
 const temperatureDisplay = document.getElementById('temperature');
 const gameContainer = document.getElementById('gameContainer');
 
+// Dictionnaire contenant les source et caracteristiques des objets :
 const assets = {
     semelle: {
         imageSrc: 'assets/images/semelle_rouge.png',
@@ -124,6 +125,7 @@ function increaseSpeed() {
     console.log(`Vitesse augmentée à ${currentSpeed}`);
     updateObjectsSpeeds();
 }
+// Fonction : mettent à jour la vitesse des objets : 
 function updateObjectsSpeeds() {
     const objects = document.querySelectorAll('.game-object');
     objects.forEach(object => {
@@ -140,6 +142,7 @@ function increaseTemperature() {
         endGame();
     }
 }
+// Fonction : popup affichant un message avec le score du joueur lorsque la partie est terminée (le joueur a perdu) :
 function endGame(){
     cancelAnimationFrame(gameLoop);
     const gameOverMessage = document.createElement('div');
@@ -157,6 +160,7 @@ function endGame(){
     });
 
 }
+// Vérifie si la temperature est superieur ou egale a 100%
 function checkGameOver() {
     if (temperature >= 100) {
         endGame();
@@ -236,9 +240,10 @@ function createObject(type) {
     let isColliding;
     let attempts = 0; // Nombre de tentative initial
     const maxAttempts = 50; // Nombre de tentative maximum autorisé pour positioner un objet
+    // Instruction évitant à l'objet d'entrer en collision lors de leur création :
     do{        
         isColliding = false;
-        leftPosition = Math.random() * (centralWidth - asset.width) + centralLeft;
+        leftPosition = Math.random() * (centralWidth - asset.width) + centralLeft; // Génère l'axe x de la création de l'objet
         object.style.left = `${leftPosition}px`;
         for (let existingObj of existingObjects) {
             const existingLeft = parseInt(existingObj.style.left);
@@ -250,7 +255,7 @@ function createObject(type) {
         //object.style.left = `${Math.random() * (centralWidth - asset.width) + centralLeft}px`; // Position aléatoire dans la partie centrale 
         attempts++; // Incrémentation du nombre de tentative 
     }while(isColliding && attempts < maxAttempts);
-    if(!isColliding){
+    if(!isColliding){ // Si il n'y à pas de collision, génère l'objet
        gameContainer.appendChild(object); 
        console.log(`Objet placé après ${attempts} tentatives`);
     }else {
