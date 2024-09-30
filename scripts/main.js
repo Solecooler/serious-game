@@ -142,6 +142,8 @@ function increaseTemperature() {
         endGame();
     }
 }
+
+
 // Fonction : popup affichant un message avec le score du joueur lorsque la partie est terminée (le joueur a perdu) :
 function endGame(){
     cancelAnimationFrame(gameLoop);
@@ -151,8 +153,8 @@ function endGame(){
                                 <div class="content_popup">
                                 <h2 class="GameOver_popupTitle">Game Over</h2>
                                 <p>Votre travailleur a trop chaud</p>
-                                <p>Score final: ${score}</p>
-                                <button onclick='resetAndStartGame()' class="GameOver_popupBtn">Rejouer</button>
+                                <p>${pseudo} votre score final est : ${score}</p>	
+                                <button onclick="resetAndStartGame()" class="GameOver_popupBtn" id="BtnOverGame">Rejouer</button>	
                                 </div>`;
     gameContainer.appendChild(gameOverMessage);
     document.querySelectorAll('.game-object').forEach(obj => {
@@ -273,5 +275,11 @@ document.addEventListener('keydown', (event) => {
     }
     character.style.left = `${characterPosition}px`;
 });
-resetGame(); // Réinitialise le jeu (Cette fonction permet au joueur de déplacer le PNJ)
-gameLoop();// Vitesse de déplacement à gauche
+window.Gamestart = function(){
+    var menu = document.getElementById("gameMenu");
+    pseudo = document.getElementById("pseudo").value
+    console.log(pseudo)
+    menu.style.display = "none"
+    resetGame();  // Réinitialise le jeu (Cette fonction permet au joueur de déplacer le PNJ)
+    gameLoop();  // Vitesse de déplacement à gauche
+}
