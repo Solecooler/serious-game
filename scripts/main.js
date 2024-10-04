@@ -122,7 +122,7 @@ function increaseScore() {
 // Emplification de la vitesse : 
 function increaseSpeed() {
     currentSpeed *= speedMultiplier;
-    console.log(`Vitesse augmentée à ${currentSpeed}`);
+    //console.log(`Vitesse augmentée à ${currentSpeed}`);
     updateObjectsSpeeds();
 }
 // Fonction : mettent à jour la vitesse des objets : 
@@ -154,12 +154,13 @@ function endGame(){
                                 <h2 class="GameOver_popupTitle">Game Over</h2>
                                 <p>Votre travailleur a trop chaud</p>
                                 <p>${pseudo} votre score final est : ${score}</p>	
-                                <button onclick="resetAndStartGame()" class="GameOver_popupBtn" id="BtnOverGame">Rejouer</button>	
+                                <button onclick="resetAndStartGame()" class="GameOver_popupBtn" id="BtnOverGame">Restart</button>	
                                 </div>`;
     gameContainer.appendChild(gameOverMessage);
     document.querySelectorAll('.game-object').forEach(obj => {
         obj.style.animationPlayState = 'paused';
     });
+    senData(pseudo,score);
 
 }
 // Vérifie si la temperature est superieur ou egale a 100%
@@ -259,9 +260,9 @@ function createObject(type) {
     }while(isColliding && attempts < maxAttempts);
     if(!isColliding){ // Si il n'y à pas de collision, génère l'objet
        gameContainer.appendChild(object); 
-       console.log(`Objet placé après ${attempts} tentatives`);
+       //console.log(`Objet placé après ${attempts} tentatives`);
     }else {
-        console.log("Impossible de placer l'objet après le nombre maximal de tentatives");
+        //console.log("Impossible de placer l'objet après le nombre maximal de tentatives");
     }
     
 }
@@ -275,6 +276,11 @@ document.addEventListener('keydown', (event) => {
     }
     character.style.left = `${characterPosition}px`;
 });
+async function senData(pseudo, score) {
+    console.log(pseudo+":"+score);
+    
+}
+
 window.Gamestart = function(){
     var menu = document.getElementById("gameMenu");
     pseudo = document.getElementById("pseudo").value
